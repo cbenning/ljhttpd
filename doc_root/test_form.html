@@ -1,0 +1,93 @@
+<html>
+<head>
+<script language="JavaScript">
+		
+function isValid(data)
+{
+		if(!isNotEmpty(data.firstname.value)||!isLettersOnly(data.firstname.value))
+	{
+		alert("The Firstname Field is Invalid!");
+		return false; 
+	}
+		if(!isNotEmpty(data.lastname.value)||!isLettersOnly(data.lastname.value))
+	{
+		alert("The Lastname Field is Invalid!");
+		return false; 
+	}
+		if(!isNotEmpty(data.stunum.value)||!isNumbersOnly(data.stunum.value))
+	{
+		alert("The Student Number Field is Invalid!");
+		return false; 
+	}
+	return true;
+}	
+
+function isNotEmpty(data)
+ {
+   if(data.length > 0)
+   {
+     return true;
+   }
+   return false;
+ }
+
+function isLettersOnly(data)
+ {
+ 	var lettersRegXP = /^([a-zA-Z\s]+)$/;
+	 if (lettersRegXP.test(data) != true)
+	 {
+	 return false;
+	 }
+	 else return true;
+ }
+ 
+function isNumbersOnly(data)
+ {
+ 	var lettersRegXP = /^([0-9]+)$/;
+	 if (lettersRegXP.test(data) != true)
+	 {
+	 return false;
+	 }
+	 else return true;
+ }
+
+</script>
+	
+</head>
+<body>
+
+
+<form name="post_form" action="http://127.0.0.1:7000/echo" method="POST" onsubmit="return isValid(post_form);">
+<div id="form_div">
+<br />
+<table id="form_table">
+  <tr>
+    <td>First Name:</td>
+    <td><input type="text" name="firstname" /></td>
+  </tr>
+  <tr>
+    <td>Last Name:</td>
+    <td><input type="text" name="lastname" /></td>
+  </tr>
+  <tr>
+    <td>Student Number:</td>
+    <td><input type="text" name="stunum" /></td>
+  </tr>
+  <tr>
+    <td>Area of Study:</td>
+    <td>
+    <INPUT TYPE=RADIO NAME="study" VALUE="csc" checked>CSC</input>
+    <INPUT TYPE=RADIO NAME="study" VALUE="seng">SENG</input>
+    <INPUT TYPE=RADIO NAME="study" VALUE="other">Other</input>
+    </td>
+  </tr>
+
+  <tr>
+    <td></td>
+    <td><br /><input type="submit" value="Submit"></td>
+  </tr>
+</table>
+</form>
+
+</body>
+</html>
